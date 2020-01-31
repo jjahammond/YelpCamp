@@ -12,8 +12,10 @@ mongoose.connect("mongodb://localhost/yelp_camp", {
   useUnifiedTopology: true
 });
 
+// Set middleware
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 
 // Seed database
 seedDB();

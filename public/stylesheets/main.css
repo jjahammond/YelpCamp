@@ -1,0 +1,15 @@
+.btn-primary {
+  margin: auto 9px;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  margin: 9px;
+}
+
+.thumbnail img {
+  width: 100%;
+}
