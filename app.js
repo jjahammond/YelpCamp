@@ -2,8 +2,9 @@ const express     = require('express'),
       app         = express(),
       bodyParser  = require('body-parser'),
       mongoose    = require("mongoose"),
-      Campground  = require("./models/campground"),
-      seedDB      = require("./seeds");
+      Campground  = require('./models/campground'),
+      Comment     = require('./models/comment')
+      seedDB      = require('./seeds');
 
 // Setup MongoDB through mongoose
 mongoose.connect("mongodb://localhost/yelp_camp", {
@@ -32,10 +33,7 @@ app.get("/campgrounds", (req, res) => {
 });
 
 app.post("/campgrounds", (req, res) => {
-  var name = req.body.name;
-  var image = req.body.image;
-  var description = req.body.description;
-  var newCampground = {name, image, description};
+  var newCampground = req.body;
 
   // Save to database
   Campground.create(newCampground, (err, newCreated) => {
@@ -61,10 +59,36 @@ app.get("/campgrounds/:id", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(campground);
       res.render("show", {campground});
     }
   });
+});
+
+app.post("/campgrounds/:id/comments", (req, res) => {
+  // Get comment object from request
+  var newComment = req.body;
+
+  // Save to database
+  Comment.create(newComment, (err, newCreated) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // Now find correct campground to add to
+      Campground.findById(req.params.id, (err, campground) => {
+        if (err) {
+          console.log(err);
+        } else {
+          // Now push newCreated into campground
+          campground.comments.push(newCreated);
+          campground.save();
+          console.log("Comment added ");
+          // Now redirect to campground SHOW page
+          res.redirect("/campgrounds/" + req.params.id);
+        }
+      });
+    }
+  });
+
 });
 
 app.listen(3000, () => {

@@ -28,25 +28,21 @@ var data = [
 
 function seedDB() {
   // Remove all campgrounds
-  Campground.remove({}, (err) => {
+  Campground.deleteMany({}, (err) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("Campgrounds removed");
       // Remove all comments
-      Comment.remove({}, (err) => {
+      Comment.deleteMany({}, (err) => {
         if (err) {
           console.log(err);
         } else {
           // Add some campgrounds
-          var i = 1;
-          var j = 1;
           data.forEach((campground) => {
             Campground.create(campground, (err, campground) => {
               if (err) {
                 console.log(err);
               } else {
-                console.log("Campground added " + i);
                 Comment.create({
                   text: "This place is great, but I wish there was internet",
                   author: "Homer"
@@ -56,12 +52,9 @@ function seedDB() {
                   } else {
                     campground.comments.push(comment);
                     campground.save();
-                    console.log("Comment added " + j);
                   }
-                  j++;
                 });
               }
-              i++;
             });
           });
         }
