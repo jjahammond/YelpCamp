@@ -13,8 +13,13 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
   var newCampground = req.body;
+  newCampground.addedBy = {
+    id: req.user._id,
+    username: req.user.username
+  };
+  console.log(newCampground);
 
   // Save to database
   Campground.create(newCampground, (err, newCreated) => {
@@ -27,7 +32,7 @@ router.post("/", (req, res) => {
 });
 
 // /campgrounds/new must be declared before campgrounds/:id
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
   res.render("new.ejs");
 });
 
@@ -44,5 +49,13 @@ router.get("/:id", (req, res) => {
     }
   });
 });
+
+// Middleware - currently in two files (refactor)
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
 
 module.exports = router;

@@ -5,8 +5,13 @@ const Campground = require('../models/campground'),
       Comment    = require('../models/comment');
 
 router.post("/", isLoggedIn, (req, res) => {
-  // Get comment object from request
-  var newComment = {text: req.body.text, author: req.user.username};
+  // Create comment object from request
+  var newComment = {text: req.body.text};
+  newComment.author = {
+    id: req.user._id,
+    username: req.user.username
+  };
+  console.log(newComment);
 
   // Save to database
   Comment.create(newComment, (err, newCreated) => {
