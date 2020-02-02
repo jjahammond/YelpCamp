@@ -35,6 +35,10 @@ router.post("/", isLoggedIn, (req, res) => {
   });
 });
 
+router.get("/:commentId/edit", (req, res) => {
+
+});
+
 // Middleware - currently in two files (refactor)
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {

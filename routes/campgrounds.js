@@ -38,6 +38,8 @@ router.get("/new", isLoggedIn, (req, res) => {
 
 // SHOW - shows more info about one campground
 router.get("/:id", (req, res) => {
+  var currentUser = req.user ? req.user.username : undefined;
+
   // find campground with :id
   Campground.findById(req.params.id)
   .populate("comments")
@@ -45,6 +47,7 @@ router.get("/:id", (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      campground.currentUser = currentUser;
       res.render("show", {campground});
     }
   });

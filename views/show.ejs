@@ -25,12 +25,21 @@
 
         <div class="well">
           <% campground.comments.forEach((comment) => { %>
+            <% console.log(comment) %>
             <div class="row">
               <div class="col-md-12">
 
                 <strong><%= comment.author.username %></strong>
                 <span class="pull-right">10 days ago</span>
                 <p><%= comment.text %></p>
+                <% if (comment.author.username === campground.currentUser) { %>
+                  <a class="btn btn-warning blog-actions" data-toggle="modal" data-target="#myModal">Update</a>
+                  <form class="delete-post" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/?_method=DELETE" method="post">
+                    <div class="form-group">
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  </form>
+                <% } %>
                 <hr>
 
               </div>
@@ -51,6 +60,25 @@
             </form>
           <% } %>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit Comment</h4>
+        </div>
+        <div class="modal-body add-comment">
+          <textarea class="form-control" rows="2" cols="80" name="text"><%= comment.text %></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
