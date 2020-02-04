@@ -19,7 +19,6 @@ router.post("/", isLoggedIn, (req, res) => {
     id: req.user._id,
     username: req.user.username
   };
-  console.log(newCampground);
 
   // Save to database
   Campground.create(newCampground, (err, newCreated) => {

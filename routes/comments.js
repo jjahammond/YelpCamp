@@ -11,7 +11,6 @@ router.post("/", isLoggedIn, (req, res) => {
     id: req.user._id,
     username: req.user.username
   };
-  console.log(newComment);
 
   // Save to database
   Comment.create(newComment, (err, newCreated) => {
@@ -26,7 +25,7 @@ router.post("/", isLoggedIn, (req, res) => {
           // Now push newCreated into campground
           campground.comments.push(newCreated);
           campground.save();
-          console.log("Comment added ");
+
           // Now redirect to campground SHOW page
           res.redirect("/campgrounds/" + req.params.id);
         }
@@ -35,9 +34,24 @@ router.post("/", isLoggedIn, (req, res) => {
   });
 });
 
-router.get("/:commentId/edit", (req, res) => {
 
+router.put("/:commentId", (req, res) => {
+  Comment.findByIdAndUpdate(req.params.commentId, {text: req.body.text}, (err, updatedComment) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  });
 });
+
+
+router.delete("/:commentId", (req, res) => {
+  Comment.findByIdAndRemove(req.params.commentId, (err) => {
+    res.redirect("/campgrounds/" + req.params.id);
+  });
+});
+
 
 // Middleware - currently in two files (refactor)
 function isLoggedIn(req, res, next) {
