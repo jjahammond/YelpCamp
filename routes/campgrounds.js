@@ -1,7 +1,8 @@
 const express = require('express'),
       router  = express.Router();
 
-const Campground = require('../models/campground');
+const Campground = require('../models/campground'),
+      Comment    = require('../models/comment');
 
 router.get("/", (req, res) => {
   Campground.find({}, (err, campgrounds) => {
@@ -51,6 +52,46 @@ router.get("/:id", (req, res) => {
     }
   });
 });
+
+router.put("/:id", (req, res) => {
+  console.log("Put Request");
+  console.log(req.params.id);
+  console.log(req.body);
+
+  Campground.findByIdAndUpdate(req.params.id, req.body, (err, updatedCampground) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  });
+});
+
+router.delete("/:id", (req, res) => {
+  Campground.findById(req.params.id, (err, campground) => {
+    if (err) {
+      console.log(err);
+    } else {
+      campground.comments.forEach(commentId => {
+        Comment.findByIdAndRemove(commentId, err => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
+
+      Campground.findByIdAndRemove(req.params.id, err => {
+        if (err) {
+          res.redirect("/campgrounds");
+        } else {
+          res.redirect("/campgrounds");
+        }
+      });
+    }
+  });
+});
+
+
 
 // Middleware - currently in two files (refactor)
 function isLoggedIn(req, res, next) {
