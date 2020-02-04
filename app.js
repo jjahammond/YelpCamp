@@ -4,6 +4,7 @@ const express       = require('express'),
       session       = require('express-session'),
       bodyParser    = require('body-parser'),
       methodOverride = require('method-override'),
+      flash         = require('connect-flash'),
       LocalStrategy = require('passport-local').Strategy,
       Campground    = require('./models/campground'),
       Comment       = require('./models/comment'),
@@ -26,6 +27,7 @@ mongoose.connect("mongodb://localhost/yelp_camp", {
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
+app.use(flash());
 app.use(express.static(__dirname + "/public"));
 
 // Setup session and initialize passport
@@ -45,6 +47,8 @@ passport.deserializeUser(User.deserializeUser());
 // Custom middleware
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 })
 

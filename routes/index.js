@@ -26,12 +26,12 @@ router.get("/signup", (req, res) => {
 
 // POST - Handle Sign up request
 router.post("/signup", (req, res) => {
-  User.register(new User({username: req.body.username}), req.body.password, (err) => {
+  User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
     if (err) {
-      console.log(err);
-      res.render("signup");
+      req.flash("error", err.message);
+      res.redirect("/signup");
     } else {
-      console.log("User registered");
+      req.flash("success", "Welcome to YelpCamp " + user.username);
       res.redirect("/campgrounds");
     }
   });
@@ -42,6 +42,7 @@ router.get("/logout", (req, res) => {
   // Handle logout here
   req.logout();
   console.log("User logged out");
+  req.flash("success", "You Logged Out!")
   res.redirect("/campgrounds");
 });
 

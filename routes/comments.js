@@ -29,6 +29,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
           campground.save();
 
           // Now redirect to campground SHOW page
+          req.flash("success", "Comment posted!");
           res.redirect("/campgrounds/" + req.params.id);
         }
       });
@@ -42,6 +43,7 @@ router.put("/:commentId", middleware.checkCommentOwnerShip, (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      req.flash("success", "Comment updated!");
       res.redirect("/campgrounds/" + req.params.id);
     }
   });
@@ -50,6 +52,7 @@ router.put("/:commentId", middleware.checkCommentOwnerShip, (req, res) => {
 
 router.delete("/:commentId", middleware.checkCommentOwnerShip, (req, res) => {
   Comment.findByIdAndRemove(req.params.commentId, (err) => {
+    req.flash("success", "Comment deleted!");
     res.redirect("/campgrounds/" + req.params.id);
   });
 });
