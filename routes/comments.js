@@ -4,7 +4,9 @@ const express = require('express'),
 const Campground = require('../models/campground'),
       Comment    = require('../models/comment');
 
-router.post("/", isLoggedIn, (req, res) => {
+const middleware = require('../middleware'); // No need to add /index.js
+
+router.post("/", middleware.isLoggedIn, (req, res) => {
   // Create comment object from request
   var newComment = {text: req.body.text};
   newComment.author = {
@@ -35,8 +37,8 @@ router.post("/", isLoggedIn, (req, res) => {
 });
 
 
-router.put("/:commentId", (req, res) => {
-  Comment.findByIdAndUpdate(req.params.commentId, {text: req.body.text}, (err, updatedComment) => {
+router.put("/:commentId", middleware.checkCommentOwnerShip, (req, res) => {
+  Comment.findByIdAndUpdate(req.params.commentId, req.body, (err, updatedComment) => {
     if (err) {
       console.log(err);
     } else {
@@ -46,19 +48,11 @@ router.put("/:commentId", (req, res) => {
 });
 
 
-router.delete("/:commentId", (req, res) => {
+router.delete("/:commentId", middleware.checkCommentOwnerShip, (req, res) => {
   Comment.findByIdAndRemove(req.params.commentId, (err) => {
     res.redirect("/campgrounds/" + req.params.id);
   });
 });
 
-
-// Middleware - currently in two files (refactor)
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;

@@ -4,6 +4,9 @@ const express = require('express'),
 const Campground = require('../models/campground'),
       Comment    = require('../models/comment');
 
+const middleware = require('../middleware'); // No need to add /index.js
+
+
 router.get("/", (req, res) => {
   Campground.find({}, (err, campgrounds) => {
     if (err) {
@@ -14,7 +17,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/", isLoggedIn, (req, res) => {
+router.post("/", middleware.isLoggedIn, (req, res) => {
   var newCampground = req.body;
   newCampground.addedBy = {
     id: req.user._id,
@@ -32,7 +35,7 @@ router.post("/", isLoggedIn, (req, res) => {
 });
 
 // /campgrounds/new must be declared before campgrounds/:id
-router.get("/new", isLoggedIn, (req, res) => {
+router.get("/new", middleware.isLoggedIn, (req, res) => {
   res.render("new.ejs");
 });
 
@@ -53,11 +56,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
-  console.log("Put Request");
-  console.log(req.params.id);
-  console.log(req.body);
-
+router.put("/:id", middleware.checkCampgroundOwnerShip, (req, res) => {
   Campground.findByIdAndUpdate(req.params.id, req.body, (err, updatedCampground) => {
     if (err) {
       console.log(err);
@@ -67,7 +66,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", middleware.checkCampgroundOwnerShip, (req, res) => {
   Campground.findById(req.params.id, (err, campground) => {
     if (err) {
       console.log(err);
@@ -91,14 +90,5 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-
-
-// Middleware - currently in two files (refactor)
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;
