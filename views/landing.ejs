@@ -1,8 +1,25 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>YelpCamp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+  </head>
+  <body>
 
-<h1>Landing Page</h1>
+    <div class="landing-header">
+      <h1>Welcome to YelpCamp!</h1>
+      <a class="btn btn-lg btn-default" href="/campgrounds">Get Started</a>
+    </div>
 
-<a href="/campgrounds">View all campgrounds</a>
-<a href="/campgrounds/new">Add new campground</a>
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
 
 <%- include("partials/footer") %>
