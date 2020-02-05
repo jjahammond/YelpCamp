@@ -18,9 +18,15 @@ const commentRoutes    = require('./routes/comments'),
 const app = express();
 
 // Setup MongoDB through mongoose
-mongoose.connect("mongodb://localhost/yelp_camp", {
+// Atlas: mongodb+srv://jjahammond:<password>@yelpcluster-7ejmm.mongodb.net/test?retryWrites=true&w=majority
+// Local: mongodb://localhost/yelp_camp
+mongoose.connect("mongodb+srv://jjahammond:Bamzook1@yelpcluster-7ejmm.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
+}).then(() => {
+  console.log("Connected to MongoDB Atlas");
+}).catch(err => {
+  console.log(err);
 });
 
 // Set middleware
