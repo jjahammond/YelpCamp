@@ -56,6 +56,10 @@ app.use("/", authRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
+app.get('/*', (req,res) => {
+  res.redirect("/campgrounds");
+});
+
 // Seed database
 seedDB();
 

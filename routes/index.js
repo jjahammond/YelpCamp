@@ -31,8 +31,8 @@ router.post("/signup", (req, res) => {
       req.flash("error", err.message);
       res.redirect("/signup");
     } else {
-      req.flash("success", "Welcome to YelpCamp " + user.username);
-      res.redirect("/campgrounds");
+      req.flash("success", "You're signed up as " + user.username + "! Now you can login");
+      res.redirect("/login");
     }
   });
 });
@@ -45,13 +45,5 @@ router.get("/logout", (req, res) => {
   req.flash("success", "You Logged Out!")
   res.redirect("/campgrounds");
 });
-
-// Middleware - currently in two files (refactor)
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;
