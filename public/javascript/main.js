@@ -1,4 +1,4 @@
-// Toggle navbar collapse
+// Toggle navbar collapse - doesn't work now bootstrap.js is active (needed for modals)
 $(document).ready(function() {
   var isVisible = false;
   $(".navbar-toggle").click(function() {
@@ -13,14 +13,20 @@ $(document).ready(function() {
       isVisible = false;
     }
   });
+
+  // Collapse alerts after 3s
+  setTimeout(function(){
+    $("div.alert").slideUp('fast');
+  }, 3000 ); // 5 secs
 });
 
+// Scroll to top on home click
 $('#home-scroll').on("click", () => {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 });
 
-
+// Fill edit comment modal with current data
 $('#editCommentModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
 
@@ -31,4 +37,4 @@ $('#editCommentModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body textarea').text(commentText);
   var commentsRoute = modal.find('.modal-body form').attr('action')
   modal.find('.modal-body form').attr('action', commentsRoute + commentId + '?_method=PUT');
-})
+});
