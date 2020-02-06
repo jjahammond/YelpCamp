@@ -1,4 +1,5 @@
 const express       = require('express'),
+      dotenv        = require('dotenv'),
       mongoose      = require("mongoose"),
       passport      = require('passport'),
       session       = require('express-session'),
@@ -16,11 +17,11 @@ const commentRoutes    = require('./routes/comments'),
       authRoutes       = require('./routes/index');
 
 const app = express();
+dotenv.config();
 
 // Setup MongoDB through mongoose
-// Atlas: mongodb+srv://jjahammond:KmXW2kuFMBX97aDU@yelpcluster-7ejmm.mongodb.net
-// Local: mongodb://localhost/yelp_camp
-mongoose.connect("mongodb+srv://jjahammond:KmXW2kuFMBX97aDU@yelpcluster-7ejmm.mongodb.net", {
+const mongoDBURL = process.env.MONGODB_URL || "mongodb://localhost/yelp_camp";
+mongoose.connect(mongoDBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -40,7 +41,7 @@ app.use(express.static(__dirname + "/public"));
 
 // Setup session and initialize passport
 app.use(session({
-  secret: 'kimi raikkonen',
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true
  }));
@@ -72,7 +73,7 @@ app.get('/*', (req,res) => {
 // seedDB();
 
 // *************  Request listener *******************
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
   console.log("Server running...")
 });
