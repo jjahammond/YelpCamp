@@ -1,16 +1,19 @@
 <%- include("partials/header") %>
 
-<div class="container">
-  <header class="jumbotron">
-    <div class="container">
-      <h1>Welcome to YelpCamp</h1>
-      <p>View our hand-picked campgrounds from all over the world</p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new campground</a>
-      </p>
-    </div>
-  </header>
+<header class="jumbotron">
+  <div class="container">
+    <h1>Welcome to YelpCamp</h1>
+    <p>View our hand-picked campgrounds from all over the world</p>
+    <p>
+      <a class="btn btn-default btn-lg btn-dark" href="#campground-scroll">See our campgrounds</a>
+      <a class="btn btn-default btn-lg btn-dark" href="/campgrounds/new">Add new campground</a>
+    </p>
+  </div>
+</header>
 
+<div id="campground-scroll"></div>
+
+<div class="container" id="campgrounds">
   <div class="row" style="display: flex; flex-wrap: wrap">
     <% campgrounds.forEach((campground) => { %>
       <div class="col-md-4 col-sm-6">
@@ -18,7 +21,7 @@
           <a href="/campgrounds/<%= campground._id %>"><img src="<%= campground.image %>"></a>
           <div class="caption">
             <h4><%= campground.name %></h4>
-            <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">More Info</a>
+            <a class="btn btn-default btn-dark" href="/campgrounds/<%= campground._id %>">More Info</a>
           </div>
         </div>
       </div>

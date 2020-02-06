@@ -1,0 +1,28 @@
+.btn-light, .btn-light:hover, .btn-light:focus {
+  background-color: Transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+  text-shadow: 2px 2px 8px #000000;
+  box-shadow: 2px 2px 8px #000000;
+  margin-bottom: 10px;
+}
+
+.btn-light:hover, .btn-light:focus {
+  outline: none;
+  background-color: #FFFFFF2F;
+  border: 1px solid #FFF;
+  color: #FFF;
+}
+
+.btn-dark, .btn-dark:hover, .btn-dark:focus {
+  background-color: Transparent;
+  border: 1px solid #333;
+  color: #333;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  outline: none;
+  background-color: #0000000F;
+  border: 1px solid #333;
+  color: #333;
+}

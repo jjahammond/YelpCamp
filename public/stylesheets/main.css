@@ -1,3 +1,30 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f5f5f5
+}
+
+.navbar {
+  margin: 0;
+  background: #f8f8f8f7;
+  backdrop-filter: blur(10px);
+}
+
+.nav-br {
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+
+.jumbotron {
+  background-image: url("/images/jumbotron-image.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 32em;
+  text-align: right;
+}
+
 .add-comment {
   margin-top: 5px;
 }
@@ -12,4 +39,40 @@
 
 .thumbnail img {
   width: 100%;
+}
+
+.well {
+  margin-top: 10%;
+  background: #FFFFFF00;
+  border: 1px solid #333;
+}
+
+.background-image {
+  /* padding-bottom: 23%; */
+  padding-bottom: 19%;
+  background-image: url("/images/jumbotron-image.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-form h1 {
+  font-size: 1.5em;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.auth-form .form-control {
+  /* border: 1px solid #333; */
+  background: Transparent;
+}
+
+.auth-form .btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#campground-scroll {
+  padding-bottom: 60px;
 }

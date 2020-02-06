@@ -1,23 +1,26 @@
 <%- include('./partials/header') %>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-          <h1>Login</h1>
-          <form action="/login" method="post">
-            <div class="form-group">
-              <input class="form-control" type="text" name="username" placeholder="username">
+    <div class="background-image">
+      <div class="container auth-form">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-5 col-md-4 col-md-offset-6 well">
+            <h1>Log in to your account</h1>
+            <form action="/login" method="post">
+              <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password">
+              </div>
+              <button type="submit" class="btn btn-default btn-dark">Log In</button>
+            </form>
+            <div>
+              New to YelpCamp? <a href="/signup">Sign Up</a>
             </div>
-            <div class="form-group">
-              <input class="form-control" type="password" name="password" placeholder="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-          </form>
-          <div>
-            Don't have an account? <a href="/signup">Sign Up</a>
           </div>
         </div>
       </div>
     </div>
+
 
 <%- include('./partials/footer') %>
