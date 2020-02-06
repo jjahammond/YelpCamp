@@ -5,6 +5,7 @@ const express       = require('express'),
       bodyParser    = require('body-parser'),
       methodOverride = require('method-override'),
       flash         = require('connect-flash'),
+      timeout       = require('connect-timeout'),
       LocalStrategy = require('passport-local').Strategy,
       Campground    = require('./models/campground'),
       Comment       = require('./models/comment'),
@@ -16,6 +17,7 @@ const commentRoutes    = require('./routes/comments'),
       authRoutes       = require('./routes/index');
 
 const app = express();
+app.use(timeout('5s'));
 
 // Setup MongoDB through mongoose
 // Atlas: mongodb+srv://jjahammond:<password>@yelpcluster-7ejmm.mongodb.net/test?retryWrites=true&w=majority
@@ -32,9 +34,13 @@ mongoose.connect("mongodb+srv://jjahammond:Bamzook1@yelpcluster-7ejmm.mongodb.ne
 // Set middleware
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(haltOnTimedout);
 app.use(methodOverride('_method'));
+app.use(haltOnTimedout);
 app.use(flash());
+app.use(haltOnTimedout);
 app.use(express.static(__dirname + "/public"));
+app.use(haltOnTimedout);
 
 // Setup session and initialize passport
 app.use(session({
@@ -68,6 +74,10 @@ app.get('/*', (req,res) => {
 
 // Seed database
 //seedDB();
+
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
 
 // *************  Request listener *******************
 const PORT = process.env.PORT || 3000
