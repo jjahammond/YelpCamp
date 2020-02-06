@@ -17,12 +17,12 @@ const commentRoutes    = require('./routes/comments'),
       authRoutes       = require('./routes/index');
 
 const app = express();
-app.use(timeout('5s'));
+//app.use(timeout('5s'));
 
 // Setup MongoDB through mongoose
 // Atlas: mongodb+srv://jjahammond:<password>@yelpcluster-7ejmm.mongodb.net/test?retryWrites=true&w=majority
 // Local: mongodb://localhost/yelp_camp
-mongoose.connect("mongodb+srv://jjahammond:Bamzook1@yelpcluster-7ejmm.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://jjahammond:KmXW2kuFMBX97aDU@yelpcluster-7ejmm.mongodb.net", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -31,16 +31,32 @@ mongoose.connect("mongodb+srv://jjahammond:Bamzook1@yelpcluster-7ejmm.mongodb.ne
   console.log(err);
 });
 
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://jjahammond:KmXW2kuFMBX97aDU@yelpcluster-7ejmm.mongodb.net";
+// const client = new MongoClient(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+// client.connect(err => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     const collection = client.db("test").collection("devices");
+//     // perform actions on the collection object
+//     client.close();
+//   }
+// });
+
 // Set middleware
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(haltOnTimedout);
+//app.use(haltOnTimedout);
 app.use(methodOverride('_method'));
-app.use(haltOnTimedout);
+//app.use(haltOnTimedout);
 app.use(flash());
-app.use(haltOnTimedout);
+//app.use(haltOnTimedout);
 app.use(express.static(__dirname + "/public"));
-app.use(haltOnTimedout);
+//app.use(haltOnTimedout);
 
 // Setup session and initialize passport
 app.use(session({
