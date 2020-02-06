@@ -14,7 +14,7 @@ body {
 
 .nav-br {
   margin-top: 0px;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 .jumbotron {
@@ -43,8 +43,8 @@ body {
 
 .well {
   margin-top: 10%;
-  background: #FFFFFF00;
-  border: 1px solid #333;
+  background: #FFFFFF99;
+  /* border: 1px solid #333; */
 }
 
 .background-image {
@@ -59,7 +59,7 @@ body {
   font-size: 1.5em;
   letter-spacing: 0.8px;
   text-align: center;
-  color: #333;
+  /* color: #333; */
   margin-bottom: 30px;
 }
 
