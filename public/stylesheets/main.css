@@ -42,6 +42,8 @@ body {
 }
 
 .well {
+  max-width: 400px;
+  margin: 0 auto;
   margin-top: 10%;
   background: #FFFFFF99;
   /* border: 1px solid #333; */
