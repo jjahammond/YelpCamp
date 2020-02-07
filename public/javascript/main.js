@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 
   // Scroll to top on home click
-  $('#home-scroll').on("click", () => {
+  $('.home-scroll').on("click", () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   });

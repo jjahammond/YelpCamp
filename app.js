@@ -23,7 +23,8 @@ dotenv.config();
 const mongoDBURL = process.env.MONGODB_URL || "mongodb://localhost/yelp_camp";
 mongoose.connect(mongoDBURL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 }).then(() => {
   console.log("Connected to MongoDB Atlas");
 }).catch(err => {
@@ -70,7 +71,7 @@ app.get('/*', (req,res) => {
 });
 
 // Seed database
-// seedDB();
+//seedDB();
 
 // *************  Request listener *******************
 const PORT = process.env.PORT || 5000
