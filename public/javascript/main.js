@@ -36,4 +36,5 @@ $(document).ready(function() {
     var commentsRoute = modal.find('.modal-body form').attr('action')
     modal.find('.modal-body form').attr('action', commentsRoute + commentId + '?_method=PUT');
   });
+  
 });

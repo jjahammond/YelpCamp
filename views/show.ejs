@@ -1,18 +1,22 @@
 <%- include("partials/header") %>
 
-  <div class="container">
+  <div class="container show-page">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-4 fixable">
 
         <p class="lead">YelpCamp</p>
         <div class="list-group">
-          <li class="list-group-item active">Info 1</li>
-          <li class="list-group-item">Info 2</li>
-          <li class="list-group-item">Info 3</li>
+          <li class="list-group-item lead-1">Contact Person: John Smith</li>
+          <li class="list-group-item">Contact Number: +447529974426</li>
+          <li class="list-group-item lead-3">Address: 119  Cefn Road, FARFORTH, LN11 6LL</li>
+        </div>
+
+        <div class="map">
+          <p>Map here</p>
         </div>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-8 scrollable">
         <div class="thumbnail">
           <img class="img-responsive" src="<%= campground.image %>">
           <div class="caption-full">
