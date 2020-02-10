@@ -21,15 +21,10 @@
           <div class="thumbnail">
             <img src="<%= campground.image %>">
             <div class="caption">
-              <div class="row">
-                <div class="col-xs-6">
-                  <h4><%= campground.name %></h4>
-                  <p>Added by: <strong><em><%= campground.addedBy.username %></em></strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <p>Price: <strong><em>£9.00/night</em></strong></p>
-                  <p><strong><em>02 Jan, 2020</em></strong></p>
-                </div>
+              <h4 class="index"><%= campground.name %></h4>
+              <div>
+                <span><em>3 days ago</em></span>
+                <span class="pull-right">Price: <strong><em>£9.00/night</em></strong></span>
               </div>
             </div>
           </div>

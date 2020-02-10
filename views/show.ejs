@@ -2,13 +2,38 @@
 
   <div class="container show-page">
     <div class="row">
-      <div class="col-md-4 fixable">
 
-        <p class="lead">YelpCamp</p>
+      <div class="col-md-8 col-md-push-4 scrollable">
+        <div class="thumbnail">
+          <img class="img-responsive" src="<%= campground.image %>">
+          <div class="caption show-caption">
+            <div class="show-header">
+                <h4 class="pull-right">£9.00/night</h4>
+                <h3><a href="#"><%= campground.name %></a></h3>
+            </div>
+            <div>Posted by <strong><em><%= campground.addedBy.username %></em></strong></div>
+            <p><em>3 days ago</em></p>
+            <p><%= campground.description %></p>
+            <p></p>
+            <% if (campground.addedBy.username === campground.currentUser) { %>
+              <form class="delete-post" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+                <div class="form-group">
+                  <a class="btn btn-sm btn-dark blog-actions" data-toggle="modal" data-target="#editCampgoundModal">Update</a>
+                  <button type="submit" class="btn btn-sm btn-auth">&times;</button>
+                </div>
+              </form>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-pull-8 fixable">
+
+        <p class="lead hidden-xs hidden-sm">YelpCamp</p>
         <div class="list-group">
-          <li class="list-group-item lead-1">Contact Person: John Smith</li>
-          <li class="list-group-item">Contact Number: +447529974426</li>
-          <li class="list-group-item lead-3">Address: 119  Cefn Road, FARFORTH, LN11 6LL</li>
+          <li class="list-group-item">Contact Person: John Smith</li>
+          <li class="list-group-item top-border">Contact Number: +447529974426</li>
+          <li class="list-group-item top-border">Address: 119  Cefn Road, FARFORTH, LN11 6LL</li>
         </div>
 
         <div class="map">
@@ -16,57 +41,70 @@
         </div>
       </div>
 
-      <div class="col-md-8 scrollable">
-        <div class="thumbnail">
-          <img class="img-responsive" src="<%= campground.image %>">
-          <div class="caption-full">
-            <h4 class="pull-right">£9.00/night</h4>
-            <h4><a href="#"><%= campground.name %></a></h4>
-            <p>Added by: <%= campground.addedBy.username %></p>
-            <p><%= campground.description %></p>
-            <% if (campground.addedBy.username === campground.currentUser) { %>
-              <form class="delete-post" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
-                <div class="form-group">
-                  <a class="btn btn-sm btn-warning blog-actions" data-toggle="modal" data-target="#editCampgoundModal">Update</a>
-                  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                </div>
-              </form>
-            <% } %>
-          </div>
-        </div>
-
-        <div class="well">
+      <div class="col-md-8 col-md-push-4 scrollable">
+        <div class="well well-show">
           <% campground.comments.forEach((comment) => { %>
             <div class="row">
               <div class="col-md-12">
 
-                <strong><%= comment.author.username %></strong>
-                <span class="pull-right">10 days ago</span>
-                <p><%= comment.text %></p>
                 <% if (comment.author.username === campground.currentUser) { %>
-                  <form class="delete-post" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
-                    <div class="form-group">
-                      <a class="btn btn-sm btn-warning blog-actions" data-toggle="modal" data-target="#editCommentModal" data-text="<%= comment.text %>" data-id="<%= comment._id %>">Update</a>
-                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                  <span class="pull-right">
+                    <!-- <button type="submit" class="close">&times;</button> -->
+                    <div class="dropdown">
+                      <button type="button" class="dropdown-button" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </button>
+                      <div class="dropdown-menu list-group" aria-labelledby="dLabel">
+                        <button class="blog-actions" data-toggle="modal" data-target="#editCommentModal" data-text="<%= comment.text %>" data-id="<%= comment._id %>">
+                          <li class="list-group-item">Update</li>
+                        </button>
+                        <form class="delete-post" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
+                          <button type="submit">
+                            <li class="list-group-item top-border">
+                              Delete
+                            </li>
+                          </button>
+                        </form>
+
+                      </div>
                     </div>
-                  </form>
+
+                  </span>
                 <% } %>
-                <hr>
+
+                <div class="comment-header">
+                  <div>
+                    <% if (currentUser) { %>
+                      <% if (currentUser.username == comment.author.username) { %>
+                        <strong><em>You</em></strong>
+                      <% } else { %>
+                        <strong><em><%= comment.author.username %></em></strong>
+                      <% } %>
+                    <% } else { %>
+                      <strong><em><%= comment.author.username %></em></strong>
+                    <% } %>
+                  </div>
+                  <em>10 days ago</em>
+                </div>
+                <p class="comment-body"><%= comment.text %></p>
+                <!-- <hr> -->
 
               </div>
             </div>
           <% }) %>
 
           <% if (!currentUser) { %>
-            <a class="btn btn-lg btn-primary btn-block" href="/login">Log in to add a comment</a>
+            <a class="btn btn-lg btn-auth" href="/login">Log in to add a comment</a>
           <% } else { %>
-            <strong><%= currentUser.username %></strong>
+            <strong><em><%= currentUser.username %></em></strong>
             <form class="" action="/campgrounds/<%= campground._id %>/comments" method="post">
               <div class="form-group add-comment">
                 <textarea class="form-control" rows="2" cols="80" placeholder="comment" name="text"></textarea>
               </div>
               <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Add Comment</button>
+                <button class="btn btn-lg btn-auth btn-block">Add Comment</button>
               </div>
             </form>
           <% } %>
@@ -89,8 +127,8 @@
               <textarea class="form-control add-comment" rows="2" cols="80" name="text">Placeholder Text</textarea>
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-auth">Save changes</button>
             </div>
           </form>
         </div>
@@ -118,8 +156,8 @@
               <textarea class="form-control" rows="8" cols="80" placeholder="description" name="description"><%= campground.description %></textarea>
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-auth">Save changes</button>
             </div>
           </form>
         </div>

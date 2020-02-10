@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  var $nav = $(".navbar.navbar-default");
+  $nav.toggleClass("scrolled", $(this).scrollTop() > $('.navbar-header').height());
+  // Fade in navbar
+  $(document).scroll(function(){
+    $nav.toggleClass("scrolled", $(this).scrollTop() > $('.navbar-header').height());
+  });
+
   // Toggle navbar collapse
   $(document).on("click", function(event) {
     var trigger = $(".navbar-toggle")[0];
@@ -36,5 +43,5 @@ $(document).ready(function() {
     var commentsRoute = modal.find('.modal-body form').attr('action')
     modal.find('.modal-body form').attr('action', commentsRoute + commentId + '?_method=PUT');
   });
-  
+
 });

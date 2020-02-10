@@ -20,9 +20,7 @@
 }
 .btn-dark:hover, .btn-dark:focus {
   outline: none;
-  /* background-color: #0000000F;
   border: 1px solid #333;
-  color: #333; */
   background-color: #333333DD;
   color: white;
 }
@@ -35,9 +33,18 @@
 }
 .btn-auth:hover, .btn-auth:focus {
   outline: none;
-  /* background-color: #0000000F;
-  border: 1px solid #333;
-  color: #333; */
   background-color: #333333EE;
   color: white;
+  border: 1px solid #333;
+}
+
+/* Close button */
+.btn-close {
+  background-color: Transparent;
+  border: 1px solid #333;
+  color: #333;
+}
+.btn-close:hover, .btn-close:focus {
+  outline: none;
+  background-color: #f8f8f8f7;
 }

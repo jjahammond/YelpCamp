@@ -3,17 +3,18 @@ html {
 }
 
 body {
-  background: #f5f5f5;
+  background: #f1f1f1;
 }
 
 .navbar {
   margin: 0;
-  background: #f8f8f8f7;
+  background: none;
+  border: none;
 }
 
-.nav-br {
-  margin-top: 0px;
-  padding-bottom: 50px;
+.navbar.scrolled {
+  background: #f8f8f8f7;
+  transition: background 200ms;
 }
 
 .jumbotron {
@@ -21,7 +22,9 @@ body {
   background-size: cover;
   background-position: center;
   height: 100vh;
+  padding-top: 29vh;
   text-align: right;
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
 }
 
 .jumbotron a {
@@ -34,18 +37,19 @@ body {
 
 .thumbnail {
   padding: 0;
-  /* border: 1px solid #333; */
   border: none;
-  box-shadow: 2px 2px 8px #aaa;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
 }
 
 .thumbnail .caption {
   background: white;
   color: #333;
+  padding-top: 15px;
 }
 
-.thumbnail .caption h4 {
-  margin-top: 0;
+.thumbnail .caption h4.index {
+  margin: 0 auto;
 }
 
 .thumbnail img {
@@ -61,17 +65,92 @@ body {
 }
 
 .well {
-  max-width: 400px;
   margin: 0 auto;
-  margin-top: 10%;
   background: #FFFFFFDD;
-  box-shadow: 2px 2px 8px #aaa;
+  border: none;
+}
+
+.well-auth, .well-new {
+  max-width: 400px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
+}
+
+.well-auth {
+  margin-top: 20%;
+}
+
+.well-new {
+  margin-top: 10%;
+}
+
+.well-show {
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
+  border-radius: 0;
+  background: #f7f7f7;
+}
+
+.thumbnail .caption.show-caption {
+  padding: 19px;
+  background: #f7f7f7;
+}
+
+.dropdown-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;;
+
+  padding: 5px 0;
+  margin: 0 5px;
+  border: none;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  margin: 2px;
+  background: #777;
+  border-radius: 50%;
+}
+
+.dropdown-menu {
+  left: -130px;
+}
+
+.dropdown-menu.list-group .list-group-item {
+  font-size: 0.9em;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border-radius: 0;
+  border: none;
+}
+.dropdown-menu.list-group .list-group-item:hover {
+  text-decoration: none;
+  background: #333333DD;
+  color: white;
+}
+
+.dropdown-menu.list-group button {
+  outline: none;
+  border: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.comment-header {
+  margin-bottom: 5px;
 }
 
 .list-group {
   border-radius: 0px;
   background: #FFFFFFDD;
-  box-shadow: 2px 2px 8px #aaa;
+  /* box-shadow: 2px 2px 8px #aaa; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
   padding: 0;
   border: none
 }
@@ -80,21 +159,11 @@ body {
   border: inherit;
   padding: 15px;
   font-size: 1.1em;
+  border-radius: 0px;
 }
 
-.list-group-item:first-child {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-}
-
-.list-group-item:nth-of-type(2) {
-  border-top: 1px solid #DDD;
-}
-
-.list-group-item:last-child {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top: 1px solid #DDD;
+.top-border {
+  border-top: 1px solid #DDD !important;
 }
 
 .map {
@@ -102,12 +171,13 @@ body {
   color: white;
   text-align: center;
   vertical-align: middle;
-  box-shadow: 2px 2px 8px #aaa;
+  /* box-shadow: 2px 2px 8px #aaa; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
   padding: 25vh 0;
+  margin-bottom: 20px;
 }
 
 .background-image {
-  /* padding-bottom: 23%; */
   height: 100vh;
   background-image: url("/images/jumbotron-image.jpg");
   background-size: cover;
@@ -115,20 +185,48 @@ body {
 }
 
 .show-page {
-  padding-top: 55px;
-  padding-bottom: 55px;
+  margin-top: 115px;
+  margin-bottom: 55px;
+}
+
+.show-header h3, .show-header h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.show-header h4 {
+  padding-top: 5px;
+}
+
+.caption h3 a {
+  color: #333;
+}
+.caption h3 a:hover {
+  color: #DDD;
+  text-decoration: none;
+}
+
+textarea.form-control {
+  resize: none;
+  background: #f7f7f7;
+  border: 1px solid #DDD;
+}
+
+
+.comment-body {
+  border-bottom: 1px solid #DDD;
+  margin: 0 0 15px 0;
+  padding: 0 0 5px 0;
 }
 
 .auth-form h1 {
   font-size: 1.5em;
   letter-spacing: 0.8px;
   text-align: center;
-  /* color: #333; */
   margin-bottom: 30px;
 }
 
 .auth-form .form-control {
-  /* border: 1px solid #333; */
   background: Transparent;
 }
 
@@ -147,6 +245,25 @@ body {
 
 #alert-container {
   padding: 0;
+  top: 50px;
+  position: fixed;
+  left: 12.5%;
+  width: 75%;
+  text-align: center;
+  z-index: 1030;
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
+  border-radius: 0;
+}
+
+.alert-success {
+  background: #dff0d8dd;
+  border: none;
+  border-radius: 0;
+}
+.alert-danger {
+  background: #f2dededd;
+  border: none;
+  border-radius: 0;
 }
 
 .footer-bs {
