@@ -10,11 +10,16 @@ body {
   margin: 0;
   background: none;
   border: none;
+  transition: background 200ms;
 }
 
 .navbar.scrolled {
   background: #f8f8f8f7;
   transition: background 200ms;
+}
+
+.nav.navbar-nav.navbar-right {
+  text-align: right;
 }
 
 .jumbotron {
@@ -29,6 +34,30 @@ body {
 
 .jumbotron a {
   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .jumbotron {
+    padding-top: 10vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .jumbotron {
+    padding-top: 25vh;
+    /* text-align: left; */
+  }
+
+  .jumbotron a {
+    max-width: 200px;
+    font-size: small;
+    background: #333333DD;
+    color: white;
+  }
+
+  .jumbotron a:hover, .jumbotron a:focus {
+    background: #333333EE;
+  }
 }
 
 .add-comment {
@@ -77,11 +106,11 @@ body {
 }
 
 .well-auth {
-  margin-top: 20%;
+  margin-top: 30vh;
 }
 
 .well-new {
-  margin-top: 10%;
+  margin-top: 20vh;
 }
 
 .well-show {
@@ -187,6 +216,10 @@ body {
 .show-page {
   margin-top: 115px;
   margin-bottom: 55px;
+}
+
+.title {
+  margin-bottom: 20px;
 }
 
 .show-header h3, .show-header h4 {
