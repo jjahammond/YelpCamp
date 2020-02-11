@@ -18,7 +18,7 @@ body {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #333;
+    border: none;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #333;
@@ -27,6 +27,7 @@ body {
 
 .navbar.scrolled {
   background: #f8f8f8f7;
+  /* background: #333333F7; */
   transition: background 200ms;
 }
 
@@ -52,6 +53,9 @@ body {
   .jumbotron {
     padding-top: 22vh;
   }
+  /* .navbar-nav > li > a {
+      padding-top: 0px;
+  } */
 }
 
 @media (max-width: 600px) {
@@ -228,6 +232,11 @@ body {
 .show-page {
   margin-top: 115px;
   margin-bottom: 55px;
+}
+@media (max-width: 768px) {
+  .show-page{
+    margin-top: 145px;
+  }
 }
 
 .title {

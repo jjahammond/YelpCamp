@@ -1,10 +1,13 @@
 $(document).ready(function() {
 
   var $nav = $(".navbar.navbar-default");
-  $nav.toggleClass("scrolled", $(this).scrollTop() > $('.navbar-header').height());
+  var $nava = $(".navbar-default .navbar-nav > li > a");
+  $nav.toggleClass("scrolled", $(this).scrollTop() > 0);
+  $nava.toggleClass("scrolled", $(this).scrollTop() > 0);
   // Fade in navbar
   $(document).scroll(function(){
-    $nav.toggleClass("scrolled", $(this).scrollTop() > $('.navbar-header').height());
+    $nav.toggleClass("scrolled", $(this).scrollTop() > 0);
+    $nava.toggleClass("scrolled", $(this).scrollTop() > 0);
   });
 
   // Toggle navbar collapse
