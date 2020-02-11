@@ -1,3 +1,54 @@
+<!-- login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- <div class="modal-dialog" role="document"> -->
+    <!-- <div class="modal-content well-auth"> -->
+      <div class="container auth-form">
+          <div class="well well-auth">
+            <h1>Log in to your account</h1>
+            <form action="/login" method="post">
+              <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password">
+              </div>
+              <button type="submit" class="btn btn-default btn-auth">Log In</button>
+            </form>
+            <div>
+              New to YelpCamp? <a href="/signup">Sign Up</a>
+            </div>
+          </div>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+</div>
+
+<!-- signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- <div class="modal-dialog" role="document"> -->
+    <!-- <div class="modal-content well-auth"> -->
+      <div class="container auth-form">
+          <div class="well well-auth">
+            <h1>Sign up to YelpCamp</h1>
+            <form action="/signup" method="post">
+              <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password">
+              </div>
+              <button type="submit" class="btn btn-default btn-auth">Sign Up</button>
+            </form>
+            <div>
+              Already have an account? <a href="/login">Login</a>
+            </div>
+          </div>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+</div>
+
+
 <footer class="footer-bs">
   <div class="container">
     <div class="row">

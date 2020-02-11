@@ -96,7 +96,7 @@
           <% }) %>
 
           <% if (!currentUser) { %>
-            <a class="btn btn-lg btn-auth" href="/login">Log in to add a comment</a>
+            <a class="btn btn-lg btn-auth" data-toggle="modal" data-target="#loginModal">Log in to add a comment</a>
           <% } else { %>
             <strong><em><%= currentUser.username %></em></strong>
             <form class="" action="/campgrounds/<%= campground._id %>/comments" method="post">
