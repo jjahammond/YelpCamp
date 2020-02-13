@@ -1,96 +1,99 @@
 <!-- login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <!-- <div class="modal-dialog" role="document"> -->
-    <!-- <div class="modal-content well-auth"> -->
-      <div class="container auth-form">
-          <div class="well well-auth">
-            <h1>Log in to your account</h1>
-            <form action="/login" method="post">
-              <div class="form-group">
-                <input class="form-control" type="text" name="username" placeholder="username">
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="password">
-              </div>
-              <button type="submit" class="btn btn-default btn-auth">Log In</button>
-            </form>
-            <div>
-              New to YelpCamp? <a href="/signup">Sign Up</a>
-            </div>
-          </div>
+  <div class="modal-dialog well-auth" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel">Log in to your account</h1>
       </div>
-    <!-- </div> -->
-  <!-- </div> -->
+      <div class="modal-body">
+        <form action="/login" method="post">
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="username">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="password">
+          </div>
+          <button type="submit" class="btn btn-default btn-auth">Log In</button>
+        </form>
+        <div>
+          New to YelpCamp? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <!-- signup Modal -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <!-- <div class="modal-dialog" role="document"> -->
-    <!-- <div class="modal-content well-auth"> -->
-      <div class="container auth-form">
-          <div class="well well-auth">
-            <h1>Sign up to YelpCamp</h1>
-            <form action="/signup" method="post">
-              <div class="form-group">
-                <input class="form-control" type="text" name="username" placeholder="username">
-              </div>
-              <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="password">
-              </div>
-              <button type="submit" class="btn btn-default btn-auth">Sign Up</button>
-            </form>
-            <div>
-              Already have an account? <a href="/login">Login</a>
-            </div>
-          </div>
+  <div class="modal-dialog well-auth" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel">Sign up to YelpCamp</h1>
       </div>
-    <!-- </div> -->
-  <!-- </div> -->
+      <div class="modal-body">
+        <form action="/signup" method="post">
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="username">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="password">
+          </div>
+          <button type="submit" class="btn btn-default btn-auth">Sign Up</button>
+        </form>
+        <div>
+          Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 <!-- addnew Modal -->
 <div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <!-- <div class="modal-dialog" role="document"> -->
-    <!-- <div class="modal-content well-auth"> -->
-      <div class="container auth-form">
-        <div class="well well-new">
-          <h1>Create a new campground</h1>
-          <form class="" action="/campgrounds" method="post">
-            <div class="form-group">
-              <input class="form-control" type="text" placeholder="campground name" name="name">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="text" placeholder="contact name" name="contact">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="tel" placeholder="contact number" name="phone">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="text" placeholder="campground address" name="address">
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-addon">£</div>
-                <input type="text" class="form-control" placeholder="price per night" name="price">
-              </div>
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="url" placeholder="image url" name="image">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" rows="8" cols="80" placeholder="description" name="description"></textarea>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-lg btn-default btn-auth">Submit</button>
-            </div>
-          </form>
-
-          <a href="/campgrounds">Back</a>
-        </div>
+  <div class="modal-dialog well-new" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel">Create a new campground</h1>
       </div>
-    <!-- </div> -->
-  <!-- </div> -->
+      <div class="modal-body">
+        <form class="" action="/campgrounds" method="post">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="campground name" name="name">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="contact name" name="contact">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="tel" placeholder="contact number" name="phone">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="campground address" name="address">
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">£</div>
+              <input type="text" class="form-control" placeholder="price per night" name="price">
+            </div>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="url" placeholder="image url" name="image">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="8" cols="80" placeholder="description" name="description"></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-lg btn-default btn-auth">Submit</button>
+          </div>
+        </form>
+        <a href="/campgrounds">Back</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 

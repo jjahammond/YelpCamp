@@ -115,20 +115,6 @@ body {
   border: none;
 }
 
-.well-auth, .well-new {
-  max-width: 400px;
-  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
-  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
-}
-
-.well-auth {
-  margin-top: 30vh;
-}
-
-.well-new {
-  margin-top: 20vh;
-}
-
 .well-show {
   /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
   box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
@@ -268,20 +254,43 @@ textarea.form-control {
   padding: 0 0 5px 0;
 }
 
-.auth-form h1 {
+
+.well-auth, .well-new {
+  max-width: 400px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px; */
+  box-shadow: rgba(0, 0, 0, 0.4) 13px 26px 10px;
+}
+
+.well-auth {
+  margin: 30vh auto;
+}
+
+.well-new {
+  margin: 4vh auto;
+}
+
+.well-auth .modal-header, .well-new .modal-header {
+  height: 60px;
+  border: none;
+}
+.well-auth h1, .well-new h1 {
+  margin-top: 10px;
   font-size: 1.5em;
   letter-spacing: 0.8px;
   text-align: center;
   margin-bottom: 30px;
 }
-
-.auth-form .form-control {
+.well-auth .form-control, .well-new .form-control {
   background: Transparent;
 }
-
-.auth-form .btn {
+.well-auth .btn, .well-new .btn {
   width: 100%;
   margin-bottom: 10px;
+}
+.modal-open {
+  overflow:hidden;
+  overflow-y:scroll;
+  padding-right:0 !important;
 }
 
 #campground-scroll {
