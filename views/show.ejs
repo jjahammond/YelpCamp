@@ -8,13 +8,12 @@
           <img class="img-responsive" src="<%= campground.image %>">
           <div class="caption show-caption">
             <div class="show-header">
-                <h4 class="pull-right">£9.00/night</h4>
+                <h4 class="pull-right">£<%= campground.price %>/night</h4>
                 <h3><a href="#"><%= campground.name %></a></h3>
             </div>
             <div>Posted by <strong><em><%= campground.addedBy.username %></em></strong></div>
             <p><em>3 days ago</em></p>
             <p><%= campground.description %></p>
-            <p></p>
             <% if (campground.addedBy.username === campground.currentUser) { %>
               <form class="delete-post" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
                 <div class="form-group">
@@ -31,14 +30,13 @@
 
         <h2 class="title hidden-xs hidden-sm"><%= campground.name %></h2>
         <div class="list-group">
-          <li class="list-group-item">Contact Person: John Smith</li>
-          <li class="list-group-item top-border">Contact Number: +447529974426</li>
-          <li class="list-group-item top-border">Address: 119  Cefn Road, FARFORTH, LN11 6LL</li>
+          <li class="list-group-item">Contact Person: <%= campground.contact %></li>
+          <li class="list-group-item top-border">Contact Number: <%= campground.phone %></li>
+          <li class="list-group-item top-border">Address: <%= campground.address %></li>
         </div>
 
-        <div class="map">
-          <p>Map here</p>
-        </div>
+        <!-- Google maps -->
+        <div id="map"></div>
       </div>
 
       <div class="col-md-8 col-md-push-4 scrollable">
@@ -164,5 +162,12 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    var campground = <%- JSON.stringify(campground) %>
+  </script>
+  <script type="text/javascript" src="/javascript/map.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1KoSiIjzet7REKFdxB5Jhu26dvrjoPyU&callback=initMap"
+  async defer></script>
 
 <%- include("partials/footer") %>

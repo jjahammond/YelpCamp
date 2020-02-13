@@ -49,12 +49,56 @@
 </div>
 
 
+<!-- addnew Modal -->
+<div class="modal fade" id="addnewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- <div class="modal-dialog" role="document"> -->
+    <!-- <div class="modal-content well-auth"> -->
+      <div class="container auth-form">
+        <div class="well well-new">
+          <h1>Create a new campground</h1>
+          <form class="" action="/campgrounds" method="post">
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="campground name" name="name">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="contact name" name="contact">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="tel" placeholder="contact number" name="phone">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="campground address" name="address">
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon">£</div>
+                <input type="text" class="form-control" placeholder="price per night" name="price">
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="url" placeholder="image url" name="image">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="8" cols="80" placeholder="description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-lg btn-default btn-auth">Submit</button>
+            </div>
+          </form>
+
+          <a href="/campgrounds">Back</a>
+        </div>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+</div>
+
+
 <footer class="footer-bs">
   <div class="container">
     <div class="row">
           	<div class="col-md-3 footer-brand animated fadeInLeft">
               	<h2>YelpCamp</h2>
-                  <!-- <p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p> -->
                   <p>© 2020 YelpCamp, All rights reserved</p>
               </div>
           	<div class="col-md-6 footer-nav animated fadeInUp">

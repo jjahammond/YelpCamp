@@ -71,7 +71,7 @@ app.get('/*', (req,res) => {
 });
 
 // Seed database
-//seedDB();
+seedDB();
 
 // *************  Request listener *******************
 const PORT = process.env.PORT || 5000

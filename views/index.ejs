@@ -6,7 +6,7 @@
     <p>View our hand-picked campgrounds from all over the world</p>
     <p>
       <a class="btn btn-default btn-lg btn-dark" href="#campground-scroll">See our campgrounds</a>
-      <a class="btn btn-default btn-lg btn-dark" href="/campgrounds/new">Add new campground</a>
+      <a class="btn btn-default btn-lg btn-dark" data-toggle="modal" data-target="#addnewModal">Add new campground</a>
     </p>
   </div>
 </header>
@@ -24,7 +24,7 @@
               <h4 class="index"><%= campground.name %></h4>
               <div>
                 <span><em>3 days ago</em></span>
-                <span class="pull-right">Price: <strong><em>£9.00/night</em></strong></span>
+                <span class="pull-right">Price: <strong><em>£<%= campground.price %>/night</em></strong></span>
               </div>
             </div>
           </div>
