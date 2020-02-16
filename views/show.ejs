@@ -12,7 +12,7 @@
                 <h3><a href="#"><%= campground.name %></a></h3>
             </div>
             <div>Posted by <strong><em><%= campground.addedBy.username %></em></strong></div>
-            <p><em>3 days ago</em></p>
+            <p><em><%= campground.timeAgo %></em></p>
             <p><%= campground.description %></p>
             <% if (campground.addedBy.username === campground.currentUser) { %>
               <form class="delete-post" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
@@ -84,10 +84,9 @@
                       <strong><em><%= comment.author.username %></em></strong>
                     <% } %>
                   </div>
-                  <em>10 days ago</em>
+                  <em><%= comment.timeAgo %></em>
                 </div>
                 <p class="comment-body"><%= comment.text %></p>
-                <!-- <hr> -->
 
               </div>
             </div>

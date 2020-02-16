@@ -1,6 +1,8 @@
 const express = require('express'),
       router  = express.Router();
 
+const moment = require('moment');
+
 const Campground = require('../models/campground'),
       Comment    = require('../models/comment');
 
@@ -12,6 +14,9 @@ router.get("/", (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      campgrounds.forEach(campground => {
+        campground.timeAgo = moment(campground.createdAt).fromNow();
+      });
       res.render("index", {campgrounds});
     }
   });
@@ -58,6 +63,10 @@ router.get("/:id", (req, res) => {
         res.redirect("/campgrounds");
       } else {
         campground.currentUser = currentUser;
+        campground.timeAgo = moment(campground.createdAt).fromNow();
+        campground.comments.forEach(comment => {
+          comment.timeAgo = moment(comment.updatedAt).fromNow();
+        });
         res.render("show", {campground});
       }
     }
