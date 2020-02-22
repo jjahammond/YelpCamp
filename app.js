@@ -26,7 +26,7 @@ mongoose.connect(mongoDBURL, {
   useUnifiedTopology: true,
   useFindAndModify: false
 }).then(() => {
-  console.log("Connected to MongoDB Atlas");
+  console.log("Connected to database");
 }).catch(err => {
   console.log(err);
 });
@@ -71,10 +71,10 @@ app.get('/*', (req,res) => {
 });
 
 // Seed database
-// seedDB();
+seedDB();
 
 // *************  Request listener *******************
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
-  console.log("Server running...")
+  console.log("Server running on PORT 5000...")
 });

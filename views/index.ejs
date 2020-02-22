@@ -6,7 +6,11 @@
     <p>View our hand-picked campgrounds from all over the world</p>
     <p>
       <a class="btn btn-default btn-lg btn-dark" href="#campground-scroll">See our campgrounds</a>
-      <a class="btn btn-default btn-lg btn-dark" data-toggle="modal" data-target="#addnewModal">Add new campground</a>
+      <% if (currentUser) { %>
+        <a class="btn btn-default btn-lg btn-dark" data-toggle="modal" data-target="#addnewModal">Add new campground</a>
+      <% } else { %>
+        <a class="btn btn-default btn-lg btn-dark" data-toggle="modal" data-target="#loginModal">Add new campground</a>
+      <% } %> 
     </p>
   </div>
 </header>

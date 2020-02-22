@@ -10,6 +10,8 @@ const middleware = require('../middleware'); // No need to add /index.js
 
 
 router.get("/", (req, res) => {
+  // var currentUser = req.user ? req.user.username : undefined;
+
   Campground.find({}, (err, campgrounds) => {
     if (err) {
       console.log(err);
